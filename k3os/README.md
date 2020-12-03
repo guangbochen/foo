@@ -78,7 +78,7 @@ Persistent changes should be kept in `/var`, `/usr/local`, `/home`, or `/opt`.
 ### Upstream Distros
 
 Most of the user-space binaries comes from Alpine and are repackaged for k3OS.  Currently the
-kernel source is coming from Ubuntu 18.04 LTS. Some code and a lot of inspiration came from
+kernel source is coming from Ubuntu 20.04 LTS. Some code and a lot of inspiration came from
 [LinuxKit](https://github.com/linuxkit/linuxkit)
 
 ## Installation
@@ -344,7 +344,7 @@ the cluster.
 
 Integration with [rancher/system-upgrade-controller](https://github.com/rancher/system-upgrade-controller) has been implemented as of [v0.9.0](https://github.com/rancher/k3os/releases/tag/v0.9.0).
 To enable a k3OS node to automatically upgrade from the [latest GitHub release](https://github.com/rancher/k3os/releases/latest) you will need to make sure it has the label 
-`plan.upgrade.cattle.io/k3os-latest` with a value anything other than `disabled`. The upgrade controller will then spawn an upgrade job
+`k3os.io/upgrade` with value `enabled` (for k3OS versions prior to v0.11.x please use label `plan.upgrade.cattle.io/k3os-latest`). The upgrade controller will then spawn an upgrade job
 that will drain most pods, upgrade the k3OS content under `/k3os/system`, and then reboot. The system should come back up running the latest
 kernel and k3s version bundled with k3OS and ready to schedule pods.
 
